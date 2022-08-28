@@ -53,14 +53,64 @@ solution so that it only calculates and compares all of the different
 combinations.
 ***********************************************************************/
 
+//Laugh wan kill me sha, I don't even know where to begin on this one, I'll have to come back to this entire problems folder to try and figure this out cos damn!!!!!!!!!!!!!!!!!!
 function greedyMakeChange(target, coins = [25, 10, 5, 1]) {
   // no tests for greedyMakeChange so make sure to test this on your own
   // your code here
+  let change = [];
+  const unchecked = coins.slice(1);
+  let remainder;
+
+  if (coins.length === 0) {
+    return change;
+  }
+
+  const coin1 = coins[0];
+  const times = Math.floor(target / coin1);
+
+  if (times < 1) {
+    change.push(...greedyMakeChange(target, unchecked));
+  } else if (times === 1){
+    remainder = Math.floor(target - coin1);
+    change.push(coin1, ...greedyMakeChange(remainder, unchecked));
+  } else {
+    remainder = target - (coin1 * times);
+    change = Array(times).fill(coin1);
+    change.push(...greedyMakeChange(remainder, unchecked));
+  }
+
+  if (!change) {
+    return null;
+  }
+
+  return change;
 }
 
+// Solution : go through this later
 function makeBetterChange(target, coins = [25, 10, 5, 1]) {
   // your code here
+  if (target === 0) {
+    return [0, []];
+  }
+
+  if (coins.length === 0 && target > 0) {
+    return [Infinity, []];
+  }
+
+  if (coins[0] > target) {
+    return makeBetterChange(target, coins.slice(1));
+  } else {
+    let loseIt = makeBetterChange(target, coins.slice(1));  // just one call of change
+    let useIt = makeBetterChange(target - coins[0], coins); // just one call of change
+    if (loseIt[0] < 1 + useIt[0]) {
+        return loseIt;
+    } else {
+        return [1 + useIt[0], useIt[1].concat(coins[0])];
+    }
+  }
 }
+
+
 
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

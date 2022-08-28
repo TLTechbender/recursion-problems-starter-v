@@ -23,7 +23,39 @@ sort([]); // []
 
 function sort(nums, sorted = []) {
   // your code here
+    if(nums.length ===0){
+        return sorted;
+    }else{
+        let minimum=Math.min(...nums);
+        sorted.push(minimum);
+        nums.splice(nums.indexOf(minimum),1);
+       return sort(nums,sorted);
+    }
+
 }
+/*function sort(nums, sorted = []) {
+  // your code here
+  if (nums.length === 0) {
+    return sorted;
+  }
+
+  let idx = 0;
+  let smallest = nums[0];
+
+  for (let i = 0; i < nums.length; i++) {
+    let el = nums[i];
+    if (el < smallest) {
+      smallest = el;
+      idx = i;
+    }
+  }
+
+  nums.splice(idx, 1);
+  sorted.push(smallest);
+
+  return sort(nums, sorted);
+}*/
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

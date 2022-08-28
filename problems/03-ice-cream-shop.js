@@ -14,8 +14,18 @@ iceCreamShop([], 'honey lavender'); // false
 
 
 // your code here
+function iceCreamShop(flavors,favorite){
 
+    if(flavors.length===0){
+        return false;
+    }
 
+if (flavors[0] === favorite) {
+    return true;
+  } else {
+    return iceCreamShop(flavors.slice(1), favorite);
+  }
+};
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = iceCreamShop;

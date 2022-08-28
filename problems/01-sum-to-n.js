@@ -12,6 +12,17 @@ sumToN(-8)  // returns null
 ***********************************************************************/
 
 // your code here
+const sumToN=n=>{
+    if(n<0){
+        return null;
+    }else if(n>0){
+        return n + sumToN(n-1);
+    }
+
+return n;
+};
+
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

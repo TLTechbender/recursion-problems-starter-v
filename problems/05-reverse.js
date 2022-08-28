@@ -13,6 +13,19 @@ reverse(""); // ""
 ***********************************************************************/
 
 // your code here
+function reverse(string){
+    let i=string.length-1;
+
+
+    if(string.length===0){
+        return "";
+    } else{
+        return string[i] + reverse(string.slice(0,i));
+    }
+
+}
+
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

@@ -11,7 +11,20 @@ addToTwelve([1, 11, 4, 7, 6]); // true
 addToTwelve([1, 12, 4, 7, 6]); // false
 addToTwelve([1]); // false
 ***********************************************************************/
+function addToTwelve(array){
+   const i=0;
+    const sum=array[i] + array[i+1];
+    if(array.length<2){
+        return false;
+    }
 
+
+    if(sum!==12){
+        return addToTwelve(array.slice(1));
+    }
+  return true;
+
+};
 // your code here
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/

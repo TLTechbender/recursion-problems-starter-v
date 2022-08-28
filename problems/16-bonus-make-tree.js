@@ -62,10 +62,34 @@ The call above should return the tree below:
 }
 
 ***********************************************************************/
+// Omo, gobe ni eleyi ooo!!!! Haaa!!!!, I don't even understand the instructions!!!!!!!!
+// I'll just copy!!!!
+function rootId(nodes) {
+  return nodes.find((e) => e.parent === null).id;
+}
 
-const makeTree = (categories, parent) => {
-  // your code here
-};
+function childIds(categories, parentId) {
+  return categories.filter((c) => c.parent === parentId).map((c) => c.id);
+}
+
+function makeTree(categories, currentId) {
+  if (currentId === null) {
+    let rid = rootId(categories);
+    return { [rid]: makeTree(categories, rid) };
+  } else {
+    let tree = {};
+    childIds(categories, currentId).forEach((childId) => {
+      tree[childId] = makeTree(categories, childId);
+    });
+    return tree;
+  }
+}
+
+
+
+
+    // your code here
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

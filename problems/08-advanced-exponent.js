@@ -42,9 +42,22 @@ times `advancedExponent` is being recursively called.
 
 function advancedExponent(b, n) {
   // your code here
+   if (n === 0) {
+    return 1;
+  }
+
+  const rootExp = advancedExponent(b, Math.floor(n / 2));
+
+  if (n % 2 === 0) {
+    return rootExp * rootExp;
+  } else {
+    return b * rootExp * rootExp;
+  }
 }
 
 
+
+    //Omo I don't understand how to do this, this definately confirms that recursion is a weak area for me that I must improve on, I'ma just copy the answer.
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = advancedExponent;

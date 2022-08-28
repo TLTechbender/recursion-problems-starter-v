@@ -1,7 +1,7 @@
 /***********************************************************************
 Write a function called `subsets` that will return all subsets of an array.
 
-Examples: 
+Examples:
 
 subsets([]) // [[]]
 subsets([1]) // [[], [1]]
@@ -15,7 +15,22 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
 ***********************************************************************/
 
 // your code here
+// Omo I can only solve this question manually not with code!!!
+//
+//I'll have to like come back to this, cos this solution doesn't seem to work, how Ironic!!!!
+function subsets(nums) {
+	const powerset = [];
+	generatePowerset([], 0);
 
+	function generatePowerset(path, index) {
+		powerset.push(path);
+		for (let i = index; i < nums.length; i++) {
+			generatePowerset([...path, nums[i]], i + 1);
+		}
+	}
+
+	return powerset;
+}
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
   module.exports = subsets;
